@@ -1,0 +1,26 @@
+{% load staticfiles %}
+{% static "" as baseURL %}
+<html>
+<head>
+<title>Login Here</title>
+    <link rel="stylesheet" type="text/css" href="{{baseURL}}lgn.css">
+<body>
+    <div class="loginbox">
+    <img src="{{baseURL}}avatar.png" class="avatar">
+        <h1>Login Here</h1>
+        <form action="Login">
+            <p>Username</p>
+            <input type="text" name="email" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="pwd" placeholder="Enter Password">
+            <input type="submit" value="Login">
+            <h5 style="color: #ffe200; padding: 0; margin: 0;">{{error}}</h5>
+            <a href="p_recover.html">forgot password?</a><br>
+            <a href="Sign.html">Don't have an account?</a>
+        </form>
+        
+    </div>
+
+</body>
+</head>
+</html>

@@ -1,0 +1,261 @@
+{% load staticfiles %}
+{% static "" as baseURL %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <link rel="stylesheet" type="text/css" href="{{baseURL}}normalize.css">
+      <link rel="stylesheet" type="text/css" href="{{baseURL}}grid.css">
+      <link rel="stylesheet" type="text/css" href="{{baseURL}}ionicons.min.css">
+       <link rel="stylesheet" type="text/css" href="{{baseURL}}style.css">
+       <link rel="stylesheet" type="text/css" href="{{baseURL}}animate.css">
+       <link href="{{baseURL}}https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
+       <title>Meet-up</title>
+   </head>
+    <body>
+           <header>
+              <nav >
+                  <div class="row">
+                  <ul class="main-nav">
+                      <li><a href="abt.html">About the Web</a></li>
+                      <li><a href="#sign-in">sign-up</a></li>
+                      <li><a href="#logg-i" class="logg-in" id="logg-in">log-in</a></li>
+                      <li><a href="OurTeam.html">Developer_Team</a></li>
+                  </ul> 
+                  </div>
+              </nav>
+               <div class="hero-text-box">
+                    <h1>Are you ready to join Meet-up.</h1>   
+                   <a class="btn btn-ghost" href="#sign-in">Yes i'm</a>
+                   <div> <center> <h5 style="color: #ff3434; font-family: Copperplate Gothic ; font-size: 25px; margin-top: 150px;">{{msg1}}</h5></center>                   
+                    <center> <h5 style="color: #ff3434; font-family: Copperplate Gothic ; font-size: 25px; margin-top: 150px;">{{msg2}}</h5></center>
+                    <center> <h5 style="color:#7aff01; font-family: Copperplate Gothic ; font-size: 25px; margin-top: 150px;">{{msg3}}</h5></center>
+                    <center> <h5 style="color:#ff3434; font-family: Copperplate Gothic ; font-size: 25px; margin-top: 150px;">{{error}}</h5></center>
+</div>
+
+               </div> 
+              
+          </header>
+           <div class="bg-model" id="logg-i">
+               <div class="model-content">
+                  <div class="close">+</div>
+                   <form action="Login">
+                        <input class="row-1" type="txt" name="email" placeholder="email" required>
+                        <input class="row-1" type="password" name="pwd" placeholder="Password" required>
+                       <div class="row-2">
+                           <input type="Submit" value="Login" >
+                           <a href="#sign-in" class="do-not-h-a">Create new |</a>
+                           
+                          <a href="p_recover" class="do-not-h-a1">Forgot Password</a>
+
+                       </div>
+                   </form>
+               </div>
+           </div>
+        
+  
+        <section class="signup-form" id="sign-in">
+          <div class="row">
+            <h2>We're happy to hear from you</h2>
+        </div>        
+            <div class="row">
+                <form method="post" action="Signup" class="contact-form">
+                  {% csrf_token %}
+                    <div class="row">
+                        <div class="col span-1-of-3">
+                            <label class="rt">First Name</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="text" name="First Name" placeholder="First Name" onkeyup="lettersOnly(this)" required>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col span-1-of-3">
+                            <label class="rt">Last Name</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="text" name="Last Name"  placeholder="Last Name" onkeyup="lettersOnly(this)" required>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col span-1-of-3">
+                            <label class="rt">Email</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="email" name="email"  placeholder="Email Address" required>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col span-1-of-3">
+                            <label class="rt">Confirm Email</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="email" name="Confirm" placeholder="Confirm Email Address" required>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col span-1-of-3">
+                            <label class="rt">Password</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="password" name="Password"  placeholder="Password" minlength="06" required>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col span-1-of-3">
+                            <label class="rt">Confirm Password</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="password" name="conpwd"  placeholder="Confirm Password" required>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col span-1-of-3">
+                            <label class="rt">Mobile Number</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                            <input type="text"  name="Number"  placeholder="Enter Your 10 Digit Number" onkeyup="numbersOnly(this)"  maxlength="10" required>
+                        </div>
+                    </div>
+                         <div class="row">
+                        <div class="col span-1-of-3">
+                            <label class="rt">Gender</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                                   <div class="col span-1-of-3 rt">
+                                   <input type="radio" name="gender" value="male"> Male<br>
+                            </div>
+                                  <div class="col span-1-of-3 rt">
+                                  <input type="radio" name="gender" value="female"> Female<br>
+                            </div>
+                                  <div class="col span-1-of-3 rt">
+                                  <input type="radio" name="gender" value="other"> Other
+                                </div>
+                        </div>
+                    </div>
+                         <div class="row">
+                        <div class="col span-1-of-3">
+                            <label class="rt">Date Of Birth</label>
+                        </div>
+                        <div class="col span-2-of-3">
+                           <div class="col span-1-of-3">
+                            <select name="DOBmonth">
+                               <option>Month</option>
+                               <option value="January">January</option>
+                               <option value="February">February</option>
+                               <option value="March">March</option>
+                               <option value="April">April</option>
+                               <option value="May">May</option>
+                               <option value="June">June</option>
+                               <option value="July">July</option>
+                               <option value="August">August</option>
+                               <option value="September">September</option>
+                               <option value="October">October</option>
+                               <option value="November">November</option>
+                               <option value="December">December</option>
+                            </select>
+                            </div>
+                            <div class="col span-1-of-3">
+                            <select name="DOBday" >
+                               <option>Day</option>
+                               <option value="1">1</option>
+                               <option value="2">2</option>
+                               <option value="3">3</option>
+                               <option value="4">4</option>
+                               <option value="5">5</option>
+                               <option value="6">6</option>
+                               <option value="7">7</option>
+                               <option value="8">8</option>
+                               <option value="9">9</option>
+                               <option value="10">10</option>
+                               <option value="11">11</option>
+                               <option value="12">12</option>
+                               <option value="13">13</option>
+                               <option value="14">14</option>
+                               <option value="15">15</option>
+                               <option value="16">16</option>
+                               <option value="17">17</option>
+                               <option value="18">18</option>
+                               <option value="19">19</option>
+                               <option value="20">20</option>
+                               <option value="21">21</option>
+                               <option value="22">22</option>
+                               <option value="23">23</option>
+                               <option value="24">24</option>
+                               <option value="25">25</option>
+                               <option value="26">26</option>
+                               <option value="27">27</option>
+                               <option value="28">28</option>
+                               <option value="29">29</option>
+                               <option value="30">30</option>
+                               <option value="31">31</option>
+                               
+                            </select>
+                            </div>
+                            <div class="col span-1-of-3">
+                            <select name="DOByear">
+                               <option>Year</option>
+                               <option value="2010">2010</option>
+                               <option value="2009">2009</option>
+                               <option value="2008">2008</option>
+                               <option value="2007">2007</option>
+                               <option value="2006">2006</option>
+                               <option value="2005">2005</option>
+                               <option value="2004">2004</option>
+                               <option value="2003">2003</option>
+                               <option value="2002">2002</option>
+                               <option value="2001">2001</option>
+                               <option value="2000">2000</option>
+                               <option value="1999">1999</option>
+                               <option value="1998">1998</option>
+                               <option value="1997">1997</option>
+                               <option value="1996">1996</option>
+                               <option value="1995">1995</option>
+                               <option value="1994">1994</option>
+                               <option value="1993">1993</option>
+                               <option value="1992">1992</option>
+                               <option value="1991">1991</option>
+                               <option value="1990">1990</option>
+                               <option value="1989">1989</option>
+                               <option value="1988">1988</option>
+                               <option value="1987">1987</option>
+                               <option value="1986">1986</option>
+                               <option value="1985">1985</option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                     <div class="row">
+                        <div class="col span-1-of-3">
+                            <label>&nbsp;</label>
+                        </div>
+
+                  
+                        <div class="col span-2-of-3">
+                            <center><input type="Submit"  value="Sign-up" ></center>
+                            
+                        </div>
+                        
+                    </div>
+                    </form>
+            </div>
+            
+            
+        </section>
+      
+        <script>
+          function lettersOnly(input){
+            var regex = /[^a-z]/gi;
+            input.value = input.value.replace(regex, "");
+          }
+          function numbersOnly(input){
+            var regex = /[^0-9]/g;
+            input.value = input.value.replace(regex, "");
+          }
+        </script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+         <script src="{{baseURL}}jquery.waypoints.min.js"></script>
+          <script src="{{baseURL}}script.js"></script>
+    </body>
+</html>

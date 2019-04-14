@@ -1,0 +1,334 @@
+/*-------------------------------------------------------*/
+/*---------------------BASIC SETUP-----------------------*/
+/*-------------------------------------------------------*/
+@import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    background-color: white;
+    color: #555;
+    font-family: 'lato','Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+/*-------------------------------------------------------*/
+/*-----------------REUSABLE COMPONENT--------------------*/
+/*-------------------------------------------------------*/
+
+.row{
+    max-width: 1140px;
+    margin: 0 auto;
+}
+  
+
+h1,h2{
+    font-weight: 300%;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+   
+}
+h1{
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 300%;
+    font-weight: 300;
+    word-spacing: 4px;
+    color: white;
+}
+h2{
+    font-size: 160%;
+    word-spacing: 2px;
+    text-align: center;
+     margin-top: 30px;
+    margin-bottom: 14px;
+    
+}
+h2:after{
+    display: block;
+    height: 2px;
+    background-color: #555;
+    content: " ";
+    width: 100px;
+    margin: 0 auto;
+
+
+}
+
+/*-----------------BUTTON--------------------*/
+.btn:link,
+.btn:visited,
+input[type=Submit]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    position: fixed;
+}
+input [type=submit]{
+    background:#2ecc71;
+
+}
+.btn-full:link,
+.btn-full:visited,
+input[type=Submit]{
+    background-color: #2d3436;
+    color: #fff;
+    border: 1px solid  #b2bec3;
+    margin-right: 15px;
+    margin-top: -4px;
+    position: absolute;
+}
+
+
+.btn:hover,
+.btn:active,
+input[type=Submit]:hover,
+input[type=Submit]:active{
+    background-color: #2ecc71;
+}
+
+.btn-full:hover,
+.btn-full:active
+        {    
+        border: 1px solod #636e72;
+    
+        }
+
+.btn-ghost:hover,
+.btn-ghost:active{
+    border: 1px solid #636e72;
+    color:  #fff;
+}
+
+/*-------------------------------------------------------*/
+/*-----------------HEADER--------------------*/
+/*-------------------------------------------------------*/
+
+.hero-text-box{
+    position: absolute;
+    width: 1140PX;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+header{
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(background.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+.logo{
+    height: 50px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+.main-nav{
+    float: right;
+    list-style: none;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+.main-nav li{
+    display: inline-block;
+    margin-left: 40px;
+}
+.main-nav li a:link,
+.main-nav li a:visited{
+    padding: 8px 0;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    border-bottom: 1.5px solid transparent;
+    transition: border-bottom 0.2s;
+}
+.main-nav li a:hover,
+.main-nav li a:active{
+    border-bottom: 2px solid #adadad ;
+}
+
+/*-----------------------------------------------*/
+/*----------------sticky nav------------------------*/
+/*-----------------------------------------------*/
+
+.sticky{
+    position: fixed;
+    top: 0;
+    left: o;
+    width: 100%;
+    background-color: rgba(255,255,255,0.98);
+    box-shadow: 0 2px 2px #efefef;
+}
+
+.main-nav{
+    margin-top: 15px;    
+}
+
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited{
+    padding: 15px 0;
+    color: #555;
+}
+
+
+
+
+
+/*-----------------------------------------------*/
+/*----------------Sign-Up------------------------*/
+/*-----------------------------------------------*/
+
+.contact-form{    
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 25px;
+   
+    
+}
+
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=password],
+select,
+textarea[type=text] {
+
+     width: 100%;
+    padding: 7px;
+    border-radius: 1px;
+    border: 1px solid #ccc;
+}
+
+
+.model-content input[type=txt],
+.model-content input[type=password]
+{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.model-content input[type="txt"]:focus,.model-content input[type="password"]:focus {
+    width: 300px;
+    border-color: #2ecc71; 
+}
+
+textarea{
+    height: 100px;
+}
+
+.signup-form{
+    margin-top: 30px;
+    
+}
+.rt{
+    font-size: 22px;
+    font-weight: 400;
+    
+   
+}
+
+.bg-model{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    position: absolute;
+    object-position: center;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.model-content{
+    width: 420px;
+    height: 320px;
+    opacity: .9;
+    background-color: #111d21fc;
+    border-radius: 4px;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 20px;
+    position: relative;
+    
+}
+.row-1,
+.row-2
+{
+   display: block;
+    margin: 15px auto;
+    width: 50%;
+}
+.do-not-h-a{
+    margin-left: 0px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    padding-left: 0;
+    margin-bottom: 5PX;
+    color: white;
+    position: absolute;
+    margin-top: 92px;
+}
+.do-not-h-a1{
+    margin-left: 0px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    padding-left: 104px;
+    margin-bottom: 5PX;
+    color: white;
+    position: absolute;
+    margin-top: 92px;
+}
+
+.close{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 40px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    color: white;
+}
+
+
+
+/*-----------------------------------------------*/
+/*----------------Timeline------------------------*/
+/*-----------------------------------------------*/
+
+
+
+
+
+
+

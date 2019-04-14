@@ -1,0 +1,96 @@
+{% load staticfiles %}
+{% static "" as baseURL %}
+{% static "" as mediaURL %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>videos</title>
+	<style>
+body{
+  background-color: white; 
+  background-size: cover; 
+  background-position: static;
+}
+video{
+  width:410	px;
+  height: 220px;
+  margin-right:10px;
+  border:inset;
+  border-width: 3px;
+  border-radius: 8px;
+  border-color: black;
+}
+.img2{
+	height:190px;
+	width:200px; 
+	border:inset;
+	border-color: black;
+	border-width: 2px; 
+	color:peru; 
+	border-radius: 150px;"
+}
+.new{
+  color: grey;
+  border: inset;
+  border-color: black;
+  border-width: 1px;
+  margin-left: 40px; 
+}
+#btn{
+  padding: 4px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  margin-left: 150px;
+  border-color: skyblue;
+}
+h1{
+  color: black;
+  font-family: Harlow Solid;
+  padding: 0;
+  margin: 0;
+}
+	</style>
+
+</head>
+<body>
+	<table>
+		<td width="50%">
+			<h1>Meet-Up</h1>
+		</td>
+		<td width="35%"></td>
+		<td width="15%">
+		<center><h1>Videos</h1></center>
+		</td>
+	</table><hr>
+	<table>
+ <td width="35%">
+        <center> {% for i in ppic %}
+            {% if i.ppic %}
+            <img src="{{baseURL}}media/{{i.ppic}}" class="img2" >
+            {% endif %}
+            {% endfor %}</center>
+</td>
+<td width="65%">
+	<center><h2 style="margin-right:80px;"> {{request.session.email}}</h2>
+
+	<form enctype="multipart/form-data" method="POST" action="uploadvid">
+		{% csrf_token %}
+		<center><input type="file" name="video" class="new">
+<input type="submit" value="Upload video" id="btn"/><br>
+</form><br>
+   
+</td></table><hr>
+<form>
+
+{% for i in myvideo %}
+{% if i.videofile %}
+ <video controls='controls'>
+        <source src="{{baseURL}}media/{{i.videofile}}" type="video/mp4"/>
+    </video>
+{% endif %}
+{% endfor %}
+
+</form>
+</body>
+</html>

@@ -1,0 +1,100 @@
+
+{% load staticfiles %}
+{% static "" as baseURL %}
+{% static "" as mediaURL %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photos</title>
+<style>
+body{
+  background-color: white; 
+  background-size: cover; 
+  background-position: static;}
+img{
+  width:265px;
+  height: 265px;
+  margin: 10px; 
+  border:inset;
+  border-width: 3px;
+  border-radius: 8px;
+}
+h1{
+  color: black;
+  font-family: Harlow Solid;
+  padding: 0;
+  margin: 0;
+}
+hr{
+  padding: 0;
+  margin: 0;
+}
+.img2{
+	height:190px;
+	width:200px; 
+	border:inset;
+	border-color: black;
+	border-width: 2px; 
+	color:peru; 
+	border-radius: 150px;"
+}
+.new{
+  color: grey;
+  border: inset;
+  border-color: black;
+  border-width: 1px;
+  margin-left: 140px; 
+}
+#btn{
+  padding: 4px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  margin-left: 150px;
+  border-color: skyblue;
+}
+</style>
+</head>
+<body>
+	<table>
+		<td width="50%">
+			<h1>Meet-Up</h1>
+		</td>
+		<td width="35%"></td>
+		<td width="15%">
+		<center><h1>Photos</h1></center>
+		</td>
+	</table>
+<hr>
+ <table>
+ <td width="45%">
+        <center> {% for i in ppic %}
+            {% if i.ppic %}
+            <img src="{{baseURL}}media/{{i.ppic}}" class="img2" >
+            {% endif %}
+            {% endfor %}</center>
+</td>
+<td width="55%">
+	<center><h2 style="margin-left:0px;"> {{request.session.email}}</h2>
+   <form action="uploadpic" method="POST" enctype="multipart/form-data" style="margin-left: 50;">
+    {% csrf_token %}
+               <input type="file" name="myfile" class="new">
+<br>
+                <input type="submit" name="submit" value="upload_pic" id="btn"></center>
+           </form><br><br>
+</td></table>
+<hr>
+		<center>			
+    {% for m in pro %}
+    {% if m.photos %}
+        <img src="{{baseURL}}media/{{m.photos}}">
+    {% endif %}
+    {% endfor %}
+        <br></center>
+
+         
+     
+          
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+body{
+	margin: 0;
+	padding: 0;
+	background: #8efd6607 url(sparkl.JPG);
+	background-size: cover;
+	padding: 20px 0 0;
+	animation: animate 2s linear infinite;
+
+}
+h1{
+	font-size: 50px;
+	color: white;
+}
+
+.card{
+	max-width: 970px;
+	max-height: auto;
+	position: static;
+	margin-left: 150px;
+	background: #465bad91;
+	background-size: cover;
+	border-radius: 10px;
+	border: 4px solid #fff;
+	box-shadow: 0 10px 20px;
+}
+.text{
+	font-size: 20px;
+	font-family: Lucida Calligraphy;
+	position:relative;
+	color: white;
+	padding: 30px;
+	margin-bottom: 3px;
+}
+
+@keyframes animate{
+
+	0%{
+		background-position: 0 0;
+	}
+	100%{
+		background-position: 30px -30px;
+	}
+}

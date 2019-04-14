@@ -1,0 +1,160 @@
+{% load staticfiles %}
+{% static "" as baseURL %}
+{% static "" as mediaURL %}
+<html>
+    
+     <title>Meet-up</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{baseURL}}profile.css">
+        <link rel="stylesheet" type="text/css" href="{{baseURL}}grid.css">
+        <link rel="stylesheet" type="text/css" href="{{baseURL}}normalize.css">
+        <link rel="stylesheet" type="text/css" href="{{baseURL}}ionicons.min.css">
+        <link rel="stylesheet" type="text/css" href="{{baseURL}}animate.css">
+
+      <link href="{{baseURL}}https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
+
+    </head>
+    
+    <body>
+       <div class="header1">
+        <form action="SendRequest">
+           <input placeholder="Enter E-mail here..."  name="rec" type="text" id="searchbox">
+           <input type="submit" name="SendRequest" value="send" style="color: white; background-color: black; padding: 5px; width: 60px; border-radius: 10px;">
+       </form>
+       </div>
+       <div id="profilearea" class="header1"><a>{% for i in ppic %}
+            {% if i.ppic %}
+            <img src="{{baseURL}}media/{{i.ppic}}" class="pp">
+            {% endif %}
+            {% endfor %}</div> </a></div>
+       <div id="profilearea1" class="header1"><a href="profile.html">Profile</a> </div>
+       <div id="profilearea3" class="header1">|</div>
+       <div id="profilearea4" class="header1"><a href="timeline.html">Home</a></div>
+       <div id="findf" class="header1"><img src="{{baseURL}}frn.png" class="pp"> </div> 
+       <div id="message" class="header1"><a href="Photos"><img src="{{baseURL}}pics.PNG" class="pp"></a></div>
+        <div id="notification" class="header1"><a href="videos"><img src="{{baseURL}}vid.PNG" class="pp"></a></div>
+        <div id="profilearea2" class="header1">|</div>
+        <div id="setting" class="header1" ><div id="container" ><img src="{{baseURL}}set.png" class="pp"></div></div>
+        <div id="log-out" class="header1"><a href="logout"><img src="{{baseURL}}lo.png" class="pp"></a> </div>
+        <div id="help" class="header1"><img src="{{baseURL}}help.png" class="pp"> </div>
+         </div>
+          
+          <header>
+        <div class="col span-5-of-6">
+                <div class="cover">
+                   <div class="cover-p">
+                    {% for i in cover %}
+                    {% if i.cover %}
+                    <img src="{{baseURL}}media/{{i.cover}}" class="cover-img" >
+                    {% endif %}
+                    {% endfor %}
+                   <div class="cover-l">
+                    {% for i in ppic %}
+                    {% if i.ppic %}
+                    <img src="{{baseURL}}media/{{i.ppic}}" class="profile-image" >
+                    {% endif %}
+                    {% endfor %}<a><font style="color: white;font-family: Harlow Solid; font-size: 30px;">{{request.session.email}}</font></a>
+                    </div> 
+                    </div>
+
+                    <div class="cover-text">
+
+                    </div>
+                 <div> <form action="picchange" method="POST" enctype="multipart/form-data" style="padding-left: 235px;">
+                        <table>  
+               <input type="file" name="myfile"  style="padding-top: 4px; width: 94px;" >
+               {% csrf_token %}
+            <input type="submit" name="submit" value="change_DP" style="background-color: #ab927b; font-weight: bold;">
+            </form>
+          <form action="coverchange" method="POST" enctype="multipart/form-data" style="padding-left: 670px;">
+                         
+               <input type="file" name="myfile"  style="padding-top: 4px; width: 94px;" >
+               {% csrf_token %}
+            <input type="submit" name="submit" value="change_cover" style="background-color: #ab927b; font-weight: bold;">
+            </table></form></div>
+
+            
+            <div>
+              
+            </div>
+            
+                     <div class="col span-3-of-5">
+                      
+
+                   </div>
+              
+             <div class="post1">
+                 {% for i in myposts %}
+            <div id="post2tax" >{% if i.upic %}<img src="{{baseURL}}media/{{i.upic}}" class="pp">{% endif %}<font style="font-family: Harlow Solid; font-size: 20px; color: white;">Post uploaded by {{i.sender}}</font><br><br><font style="font-family: Copperplate Gothic; font-size: 12px; color: white;">{{i.time}}</font></div><br><br>
+            
+
+                <br><br><br><font color="white">{% if i.msg %}{{i.msg}}{% endif %}</font><br><br>
+                {% if i.wpic %}
+                <img src="{{baseURL}}media/{{i.wpic}}" height="510px" width="615px"> 
+                {% endif %}
+                {% if i.wvid %}
+                <br><video controls='controls'   height="260px" width="615px">
+        <source src="{{baseURL}}media/{{i.wvid}}" type="video/mp4"/>
+    </video><br>
+                {% endif %}
+            <hr><br><br><hr>
+             {% endfor %}
+             </div>
+                          
+                  
+               
+                    
+            
+                  
+                       <div class="sidebar">
+                           <div class="abt" style="border-style: solid; border-radius: 10px; ">
+                            <hr><h4 style=" font-family: Harlow Solid; font-size: 25px; margin: 0; text-align: center;">photos<hr></h4>
+                             {% for m in pro %}
+                              {% if m.photos %}
+                                  <img src="{{baseURL}}media/{{m.photos}}" id="pro1">
+                              {% endif %}
+                              {% endfor %}
+                                                     </div> 
+                           
+                            <div class="welcome">
+                              
+                              </div>  
+
+                            <div class="friend" style="border-style: solid; border-radius: 10px; "><hr><h4 style=" font-family: Harlow Solid; font-size: 25px; margin: 0; text-align: center;">my friends</h4>
+                              {% for i in pphoto %}<img src="{{baseURL}}media/{{i}}" id="pro">{% endfor %}
+
+                             
+                            
+                            <hr>  </div>   
+                            
+                       </div>
+                       
+                       
+                </div>
+             </div> 
+                
+            
+          
+                            
+             <div class="chat-sidebarx">
+
+             <div class="chat-sidebar">
+
+                 
+                    <div id="chatnamebox2" class="chat-sidebar"><hr><h4 style="color: black; margin: 0;">My Friends</h4><hr>{% for i in myfriends %}
+                        {{i}}
+                       
+                        <br><hr>
+                    {% endfor %}
+                </div>
+                    
+                </div>
+                 
+             </div>
+
+           
+            
+        
+        </header>
+    </body>
+</html>

@@ -1,0 +1,147 @@
+{% load staticfiles %}
+{% static "" as baseURL %}
+{% static "" as mediaURL %}
+<!DOCTYPE html>   
+   <html>
+       <title>Meet-Up</title>
+    <head>
+      
+      <link rel="stylesheet" type="text/css" href="{{baseURL}}timeline.css">
+      <link href="{{baseURL}}https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
+      <title>Meet-Up</title>      
+                        
+    </head>
+    <body>
+        <div class="header1">
+      
+       <div id="searcharea" class="header1">
+        <form action="SendRequest">
+           <input placeholder="Enter E-mail here..."  name="rec" type="text" id="searchbox">
+           <input type="submit" name="SendRequest" value="send" style="color: white; background-color: black; padding: 5px; width: 60px; border-radius: 10px;">
+       </form>
+       </div>
+       <div id="profilearea" class="header1"><a>{% for i in ppic %}
+            {% if i.ppic %}
+            <img src="{{baseURL}}media/{{i.ppic}}" class="pp">
+            {% endif %}
+            {% endfor %}</div> </a></div>
+       <div id="profilearea1" class="header1"><a href="timeline.html">Home </a> </div>
+       <div id="profilearea3" class="header1">|</div>
+       <div id="profilearea4" class="header1"><a href="profile.html">Profile</a></div>
+       <div id="findf" class="header1"><img src="{{baseURL}}frn.png" class="pp"> </div> 
+       <div id="message" class="header1"><a href="Photos"><img src="{{baseURL}}pics.PNG" class="pp"></a></div>
+        <div id="notification" class="header1"><a href="videos"><img src="{{baseURL}}vid.PNG" class="pp"></a></div>
+        <div id="profilearea2" class="header1">|</div>
+        <div id="setting" class="header1" ><div id="container" ><img src="{{baseURL}}set.png" class="pp"></div>
+        <div id="log-out" class="header1"><a href="logout"><img src="{{baseURL}}lo.png" class="pp"></a> </div>
+        <div id="help" class="header1"><img src="{{baseURL}}help.png" class="pp"> </div>
+         </div>
+        <div class="bodyn">
+            <div id="side1" class="bodyn">{% for i in ppic %}
+            {% if i.ppic %}
+
+           
+            <img src="{{baseURL}}media/{{i.ppic}}" class="pro">
+            {% endif %}
+         
+
+            {% endfor %}Profile</div>
+            <div id="side2" class="bodyn"><h3 style="color: peru;">{{request.session.email}}</h3></div>
+            <div id="side4" class="bodyn">E-mails</div>
+            <div id="side5" class="bodyn">Messages</div>
+            <div id="side6" class="bodyn">PAGES</div>
+            <div id="side7" class="bodyn">pages feed</div>
+            <div id="side8" class="bodyn">Like pages</div>
+            <div id="side9" class="bodyn">Create Page</div>
+            <div id="side10" class="bodyn">Create ad</div>
+            <div id="side11" class="bodyn">GROUPS</div>
+            <div id="side12" class="bodyn">New Groups</div>
+            <div id="side13" class="bodyn">Create Group</div>
+            <div id="side14" class="bodyn">APPS</div>
+            <div id="side15" class="bodyn">Games</div>
+            <div id="side16" class="bodyn">On This Day</div>
+            <div id="side17" class="bodyn">Game feed</div>
+           
+            <div id="side18" class="bodyn">Friends Requests
+         
+            </div><br>
+           
+        </div>
+        <div class="post00">
+       </div>
+       <div class="post10"> </div>
+          
+      
+            <div class="sideboxxx"></div>
+             <div class="post">
+                <form action="savepost" method="POST" enctype="multipart/form-data">
+                 <div id="column-1" class="post">| add pic <input type="file"  name="myfile" style="width: 88px; border-style: inset;"> | add video <input type="file"  name="video" style="width: 88px; border-style: inset;"><hr><br><br><br><br><br><br><hr></div>
+
+                    {% csrf_token %}
+                 <div id="postboxpos" class="post"><textarea placeholder="What's in your mind" name="msg" id="postbox" type="text">{{msg0}}</textarea></div>
+
+                <div id="postpos" class="post"><input type="submit"  id="buttonpost" value="post" onclick="document.getElementById('demo').innerHTML=Date()" /></div>
+               
+               <textarea id="demo" name="time" type="text"></textarea>
+                </form>
+             </div><br>
+             
+
+             <div class="post1">
+                 {% for i in myposts %}
+            <div id="post2tax" >{% if i.upic %}<img src="{{baseURL}}media/{{i.upic}}" class="pp">{% endif %}<font style="font-family: Harlow Solid; font-size: 22px;">Post uploaded by {{i.sender}}<br></font><font style="font-family: Copperplate Gothic; font-size: 12px;">{{i.time}}</font></div><br><br>
+            
+
+                <br><br><br>{% if i.msg %}{{i.msg}}{% endif %}<br><br>
+                 {% if i.wpic %}
+                <img src="{{baseURL}}media/{{i.wpic}}" height="500px" width="584px"> 
+                {% endif %}
+                {% if i.wvid %}
+                <br><video controls='controls'   height="250px" width="584px">
+        <source src="{{baseURL}}media/{{i.wvid}}" type="video/mp4"/>
+    </video><br>
+                {% endif %}
+            <hr><br><br><hr>
+             {% endfor %}
+             </div>            
+              <div class="sidebox">
+                 <div id="sidebox1" class="sidebox">
+                     <div id="sideboxx1">YOUR PAGES</div><hr><br><br><br>See all<hr>
+                     <div id="sideboxx2">THIS WEEK</div><br><br><br>See more<hr>
+                     <div id="sideboxx3">Recents Posts</div>
+             </div>
+             <div class="sideboxxx2">
+                 <div id="sidebox2" >
+                     <br>
+                     <hr>
+                     <div id="sideboxx21">Friends Requests<hr>
+              
+            {% for i in rlist %}
+                <h4 style="color:#02a71f; margin: 0;">{{i.sender}}</h4>  
+               <center> <a href="Accept?id={{i.id}}" style="color: red;">Accept</a> | 
+                <a href="Reject?id={{i.id}}" style="color: red;">Reject</a></center>
+                <br><hr style="margin: 0;">
+            {%endfor%}
+                     
+               </div>
+             
+             <div class="chat-sidebarx">
+
+             <div class="chat-sidebar">
+
+                 
+                    <div id="chatnamebox2" class="chat-sidebar"><hr><h4 style="color: black; margin: 0;">My Friends</h4><hr>{% for i in myfriends %}
+                        {{i}}
+                       
+                        <br><hr>
+                    {% endfor %}
+                </div>
+                    
+                </div>
+                 
+             </div>
+             
+    </body>
+    
+    
+</html>

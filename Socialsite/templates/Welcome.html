@@ -1,0 +1,155 @@
+{% load staticfiles %}
+{% static "" as baseURL %}
+{% static "" as mediaURL %}
+<html>
+<head>
+    <title> Welcome </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+         <link rel="stylesheet" type="text/css" href="{{baseURL}}welcome.css">
+
+</head>
+<body>
+<hr>
+<hr style="margin-bottom:20px;"><h1>Welcome to Meet-up</h1><hr>
+   
+<table>
+
+    <td width="20%">
+        <h1> {{request.session.email}}</h1><br><br>
+         {% for i in ppic %}
+            {% if i.ppic %}
+            <img src="{{baseURL}}media/{{i.ppic}}" height="190px" width="195px" border="5px" style="border-color:yellow; border-radius: 50px;">
+            {% endif %}
+            {% endfor %}
+            <form action="picchange" method="POST" enctype="multipart/form-data">
+               <table> {% csrf_token %}
+               <input type="file" name="myfile"/><br>
+            <input type="submit" name="submit" value="Upload Profile Pic" style="background-color: orange; font-weight: bold;">
+           </table></form>
+        
+    </td>
+
+
+    <td width="60%">
+        <form action="SendRequest">
+        <center><input type="text" name="rec" placeholder="Enter E-mail" style="padding:5px; width:300px; border-width:5px; margin:0px; border-radius:10px; border-color: gray; "><br><br>
+        <input type="submit" value="send Request" style="color:blue;border-width: 4px; width: 120px; font-weight: bolder; padding: 4px; border-radius: 10px; border-color: grey;background-color: orange; margin-left: 180px;"><br>
+            <font color="white" style="font-family:Comic Sans MS; font-size:20;">{{fmsg}}</font></center>
+       </form>
+    </td>
+
+
+    <td width="20%">
+   <a href="videos.html" target="new"><button style="width: 110px; 
+    padding: 5px; 
+    background-color: orange; 
+    border-radius:10px; 
+    color:white; 
+    margin-left:0%; 
+    margin-right: 0%;
+    float: right;">videos</button> </a>  
+    <a href="Photos.html" target="xyz"><button style="width: 110px; 
+    margin-top:0px; 
+    padding: 5px; 
+    background-color: orange; 
+    border-radius:10px; 
+    color:white; 
+    margin-left:0%; 
+    margin-right: 0%;
+    float: right;">Photos</button></a>
+    <form action="logout"><button style="width: 110px; 
+    margin-top:0px; 
+    padding: 5px; 
+    background-color: orange; 
+    border-radius:10px; 
+    color:white; 
+    margin-left:0%; 
+    margin-right: 0%;
+    float: right;">log-Out</button></form>
+    </form>
+
+         <br><br><br><center><h1><font style="color:orange; font-size: 35px; font-variant-caps: all-petite-caps;"><u>Friends</u><br><br></font></center>
+                {% for i in myfriends %}
+            <center><font color="white" style="font-size:20px; font-family:Segoe Print;">{{i}}</font></center><br>
+                {% endfor %}</h1>
+    </td>
+</table>
+
+<center><table>
+    <tr>
+    <td width="20%">
+            {% for i in rlist %}
+                <h2 style="color: white;">{{i.sender}}</h2> 
+                <br>
+                <a href="Accept?id={{i.id}}">Accept</a> 
+                <a href="Reject?id={{i.id}}">Reject</a>
+                <br>
+            {%endfor%}
+    </td>
+    
+
+    <td width="60%">
+        <table>
+            <div id="textarea">
+            <form action="savepost" method="POST" enctype="                     " >
+                 {% csrf_token %}
+                <center><textarea rows="8" cols="30" name="msg" style="border-width:10px; border-color:darkblue; border-radius:15px; background: linear-gradient(30deg,#03fff4,#f47195,#ffcbff,#0369ff); font-size: 20px; color: black; font-weight: bold; font-family: sans-serif;">
+                </textarea><br>
+               <center><font color="white" size="5px">pic</font><input type="file"  name="myfile" />
+               	<center><font color="white" size="5px">vid</font><input type="file" name="video" /><br>
+
+                    <input type="submit" value="post" style="padding:8px; width:200px; margin:5px; border-radius:15px; background-color:black; color:white;"><br></center>
+           </form>
+            </div>
+
+           
+        </table>
+
+<center>
+        <table>
+            {% for i in myposts %}
+            <div class="one">
+            <center><h2><u>{{i.sender}} </u></h2></center>
+                <center><h2 style="color: black;">{% if i.msg %}{{i.msg}}{% endif %}</h2></center>
+                {% if i.wpic %}
+                	<center><img src="{{baseURL}}media/{{i.wpic}}" height="250px" width="250px"></center>
+                <form action="Happy">
+                    <input type="submit">
+                </form>
+                {% endif %}
+             
+                {% if i.wvid %}
+                 <video controls='controls'   height="220px" width="400px">
+        <source src="{{baseURL}}media/{{i.wvid}}" type="video/mp4"/>
+    </video><br>
+    <form action="Happy">
+    	<input type="submit" name="like" value="like" style="padding: 4px; width: 120px;">
+    </form>
+    			{% endif %}
+    		   </div><br><br><br>
+            <tr></tr>
+            </td>
+            <tr></tr>
+            {% endfor %}
+
+        </table>
+</center>
+    </td>
+
+    <td width="20%">
+
+        <form action="mailexp">
+            <div class="two"><input type="text" name="send_to" placeholder="Message Send to" style="padding:5px; width:245px; border-width:1px; border-color:black; ">
+                <textarea rows="10" cols="30" name="msg" style="border-width:10px; border-color:darkblue;">
+                </textarea><br>
+                <input type="submit" value="send Message" style="padding:6px; width:240px; margin:5px; border-radius:15px;"><br>
+            </div></form>
+           
+
+    </td>
+    </tr>
+</table></center>
+
+
+</body>
+</html>

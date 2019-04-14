@@ -1,0 +1,76 @@
+	<!DOCTYPE html>
+<html>
+<head>
+	<title>PASSWORD RECOVERY</title>
+	<style>
+h1{
+	color: white; 
+	padding-left: 480px; 
+	padding-top: 50px
+
+}
+
+		.input [type="text"]
+		{
+			 
+			    background: #c6ffff66;
+			    display: block;
+			    margin: 20px auto;
+			    text-align: center;
+			    font-size: 16px;
+			    border: 3px solid #3498db;
+			    padding: 14px 10px;
+			    width: 200px;
+			    margin-top: -72px;
+			    outline: none;
+			    color: white;
+			    border-radius: 24px;
+			    transition: 0.25s;
+			    position: fixed;
+
+
+		}
+		.input [type="submit"]
+		{
+		background-color: #2034f0;
+	    color: #fff;
+	    border: 1px solid  #b2bf58;
+	    margin-left: 60px;
+	    margin-top: -45px;
+	    position: absolute;
+	    border-radius: 20px;
+	    padding: 14px 52px;
+		}
+
+	input[type="text"]:focus  {
+    width: 300px;
+    border-color: #2ecc71; 
+}
+
+	input[type="text"]:hover  {
+    border-color: #2ecc71; 
+}
+
+	input[type="submit"]:hover  {
+ 		background-color: #2ecc71; 
+}
+body{
+	background-image: url(static/t.jpg);
+	background-size: cover; 
+}
+
+
+	</style>
+</head>
+<body>
+	<h1><u>Password Recovery</u></h1>
+<form action="Send_pwd" style="padding-left: 480px; padding-top: 160px;">
+	<div class="input">
+	<input type="text" name="email" placeholder="Enter your meet-up Email" ><br><br><br><br>
+	<input type="text" name="Email" placeholder="Enter your Email Address"><br><br><br><br><br>
+	
+	<input type="submit" name="send">
+	</div>
+</form>
+</body>
+</html>
